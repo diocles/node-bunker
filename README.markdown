@@ -68,7 +68,13 @@ b.compile()
 
 Return the source wrapped with burrito.
 
+b.assign(context={})
+--------------------
+
+Assign the statement-tracking functions into `context`.
+
 b.run(context={})
 -----------------
 
 Run the source using `vm.runInNewContext()` with some `context`.
+The statement-tracking functions will be added to `context` by `assign()`.

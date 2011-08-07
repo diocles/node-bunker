@@ -59,12 +59,11 @@ Bunker.prototype.compile = function () {
     });
 };
 
-Bunker.prototype.run = function (context) {
+Bunker.prototype.assign = function (context) {
     if (!context) context = {};
     
     var self = this;
     var stack = [];
-    var src = self.compile();
     
     context[self.names.call] = function (i) {
         var node = self.nodes[i];
@@ -91,7 +90,12 @@ Bunker.prototype.run = function (context) {
         self.emit('node', node, stack);
     };
     
-    vm.runInNewContext(src, context);
+    return context;
+};
     
-    return self;
+Bunker.prototype.run = function (context) {
+    var src = this.compile();
+    vm.runInNewContext(src, this.assign(context));
+    
+    return this;
 };
