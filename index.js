@@ -44,6 +44,17 @@ Bunker.prototype.compile = function () {
             nodes.push(node);
             node.wrap('{' + names.stat + '(' + i + ');%s}');
         }
+        else if (node.name === 'return') {
+            nodes.push(node);
+            // We need to wrap the new source in a function definition
+            // so that UglifyJS will allow the presence of return
+            var stat = names.stat + '(' + i + ');';
+            var wrapped = 'function a(){{' + stat + node.source() +'}}';
+            var parsed = burrito.parse(wrapped);
+            // Remove the function definition from the AST
+            parsed[1] = parsed[1][0][3];
+            node.state.update(parsed, true);
+        }
         else if (node.name === 'binary') {
             nodes.push(node);
             node.wrap(names.expr + '(' + i + ')(%s)');
