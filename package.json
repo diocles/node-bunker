@@ -12,10 +12,10 @@
         "burrito" : ">=0.2.5 <0.3"
     },
     "devDependencies" : {
-        "expresso" : "0.7.x"
+        "tap" : "~0.2.4"
     },
     "scripts" : {
-        "test" : "expresso"
+        "test" : "tap test/*.js"
     },
     "repository" : {
         "type" : "git",
