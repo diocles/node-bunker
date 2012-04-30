@@ -50,9 +50,9 @@ Bunker.prototype.compile = function () {
             // We need to wrap the new source in a function definition
             // so that UglifyJS will allow the presence of return
             var stat = names.stat + '(' + i + ');';
-            var wrapped = 'function ' + names.return + '(){{'
+            var wrapped = 'function ' + names.return + '() {'
                 + stat + node.source()
-                +'}}'
+                +'}'
             ;
             var parsed = burrito.parse(wrapped);
             // Remove the function definition from the AST
