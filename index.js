@@ -15,7 +15,8 @@ function Bunker () {
     this.names = {
         call : burrito.generateName(6),
         expr : burrito.generateName(6),
-        stat : burrito.generateName(6)
+        stat : burrito.generateName(6),
+        return : burrito.generateName(6)
     };
 }
 
@@ -49,7 +50,10 @@ Bunker.prototype.compile = function () {
             // We need to wrap the new source in a function definition
             // so that UglifyJS will allow the presence of return
             var stat = names.stat + '(' + i + ');';
-            var wrapped = 'function a(){{' + stat + node.source() +'}}';
+            var wrapped = 'function ' + names.return + '(){{'
+                + stat + node.source()
+                +'}}'
+            ;
             var parsed = burrito.parse(wrapped);
             // Remove the function definition from the AST
             parsed[1] = parsed[1][0][3];
