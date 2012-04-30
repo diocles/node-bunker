@@ -9,7 +9,7 @@
         "test" : "test"
     },
     "dependencies" : {
-        "burrito" : ">=0.2.5 <0.3"
+        "burrito" : "~0.2.11"
     },
     "devDependencies" : {
         "tap" : "~0.2.4"
