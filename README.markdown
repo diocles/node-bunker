@@ -80,3 +80,10 @@ b.run(context={})
 
 Run the source using `vm.runInNewContext()` with some `context`.
 The statement-tracking functions will be added to `context` by `assign()`.
+
+licensing
+=========
+
+Copyright 2011, 2012 James Halliday <mail@substack.net>
+
+Licensed under the MIT license, see LICENSE for details.
